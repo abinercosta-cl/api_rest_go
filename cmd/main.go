@@ -9,6 +9,7 @@ import (
 func main() {
 	server := gin.Default()
 
+	// layer of controller
 	productController := controller.NewProductController()
 
 	server.GET("/ping", func(ctx *gin.Context) {
