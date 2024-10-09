@@ -2,14 +2,14 @@ package usecase
 
 import "api_go_rest/model"
 
-type productUsecase struct {
+type ProductUsecase struct {
 	//Repository
 }
 
-func NewProductUseCase() productUsecase {
-	return productUsecase{}
+func NewProductUseCase() ProductUsecase {
+	return ProductUsecase{}
 }
 
-func (pu *productUsecase) GetProducts() ([]model.Product, error) {
+func (pu *ProductUsecase) GetProducts() ([]model.Product, error) {
 	return []model.Product{}, nil
 }
