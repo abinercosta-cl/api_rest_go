@@ -2,6 +2,7 @@ package main
 
 import (
 	"api_go_rest/controller"
+	"api_go_rest/usecase"
 
 	"github.com/gin-gonic/gin"
 )
@@ -9,8 +10,10 @@ import (
 func main() {
 	server := gin.Default()
 
+	ProductUsecase := usecase.NewProductUseCase()
+
 	// layer of controller
-	productController := controller.NewProductController()
+	productController := controller.NewProductController(ProductUsecase)
 
 	server.GET("/ping", func(ctx *gin.Context) {
 		ctx.JSON(200, gin.H{
