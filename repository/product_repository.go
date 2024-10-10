@@ -1,6 +1,9 @@
 package repository
 
-import "database/sql"
+import (
+	"api_go_rest/model"
+	"database/sql"
+)
 
 type ProductRepository struct {
 	connection *sql.DB
@@ -11,3 +14,5 @@ func NewProductRepository(connection *sql.DB) ProductRepository {
 		connection: connection,
 	}
 }
+
+func (pr *ProductRepository) GetProducts() []model.Product
