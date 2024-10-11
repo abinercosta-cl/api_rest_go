@@ -34,5 +34,8 @@ func main() {
 	server.GET("/products", productController.GetProducts)
 	server.POST("/product", productController.CreateProduct)
 	server.GET("/product/:productId", productController.GetProductsById)
+
+	//2 desafios implmentar duas rotas put e delete
+	// colocar validação JWT
 	server.Run(":8000")
 }
