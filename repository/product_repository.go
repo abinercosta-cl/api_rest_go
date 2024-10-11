@@ -74,11 +74,11 @@ func (pr *ProductRepository) GetProductsById(id_product int) (model.Product, err
 
 	err = query.QueryRow(id_product).Scan(
 		&product.ID,
-		&product.Name
-		&product.Price
+		&product.Name,
+		&product.Price,
 	)
-	if err != nil{
-		if (err == sql.ErrNoRows){
+	if err != nil {
+		if err == sql.ErrNoRows {
 			return model.Product{}, nil
 		}
 
