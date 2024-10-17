@@ -89,3 +89,22 @@ func (pr *ProductRepository) GetProductsById(id_product int) (*model.Product, er
 	return &product, nil
 
 }
+
+func (pr *ProductRepository) UpdateProduct(UpdateProduct *model.Product) error {
+
+	query, err := pr.connection.Prepare("UPDATE product SET product_name = $1 , price = $2 WHERE id = $3")
+	if err != nil {
+		fmt.Println(err)
+		return err
+	}
+
+	defer query.Close()
+
+	if UpdateProduct.Name != "" || UpdateProduct.Price > 0 {
+		_, err = query.Exec(UpdateProduct.Name, UpdateProduct.Price, UpdateProduct.ID)
+		if err != nil {
+			return err
+		}
+	}
+	return nil
+}
